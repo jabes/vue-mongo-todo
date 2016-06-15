@@ -1,0 +1,20 @@
+{
+  "name": "viewjs",
+  "version": "0.0.0",
+  "main": "index.js",
+
+  "dependencies": {
+    "body-parser": "1.15.1",
+    "express": "4.13.4",
+    "jade": "1.11.0",
+    "mongoose": "4.5.0"
+  },
+
+  "scripts": {
+    "mongo-start": "mkdir mongo-db; mongod --dbpath mongo-db --port 27017",
+    "start": "node index.js"
+  },
+
+  "author": "Justin Bull",
+  "license": "ISC"
+}

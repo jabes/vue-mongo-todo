@@ -1,0 +1,17 @@
+doctype
+html
+
+head
+    title ViewJS
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    each url in styles
+        link(rel='stylesheet', href='#{url}')
+    each url in scripts
+        script(src='#{url}')
+
+body
+    #editor
+        textarea(v-model="input")
+        div(v-html="input | marked")
