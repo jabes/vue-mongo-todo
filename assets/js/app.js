@@ -9,13 +9,14 @@
 
       var socket = io.connect('//localhost:8080');
 
-      socket.on('connect', function(){
-        console.log('connected');
-      });
-      socket.on('event', function(data){});
-      socket.on('disconnect', function(){});
+      // socket.on('connect', function(){});
+      // socket.on('disconnect', function(){});
 
-      new Vue({
+      socket.on('taskAdded', function(task) {
+        vue.tasks.push(task);
+      });
+
+      var vue = new Vue({
         el: '#app',
         data: {
           newTask: {},

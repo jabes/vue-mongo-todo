@@ -28,6 +28,7 @@ module.exports = function (app) {
     models.task.create({
       text: req.body.task
     }, function (err, task) {
+      if (!err) { app.events.emit('taskAdded', task); }
       res.json({
         err: err || false,
         task: task

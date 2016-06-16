@@ -1,9 +1,11 @@
 'use strict';
 
-module.exports = function (server) {
-  var io = require('socket.io')(server);
+module.exports = function (app) {
+  var io = require('socket.io')(app.server);
 
   io.on('connection', function (socket) {
-    console.log(socket);
+    app.events.on('taskAdded', function (task) {
+      socket.emit('taskAdded', task);
+    })
   });
 };

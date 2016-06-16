@@ -2,14 +2,15 @@
 
 var rootDir = __dirname;
 var http = require('http');
+var EventEmitter = require('events');
 var express = require('express');
 var bodyParser = require('body-parser');
 
 var app = express();
 var server = http.createServer(app);
 
-require('./mongo')(app);
-require('./socket')(server);
+app.server = server;
+app.events = new EventEmitter();
 
 app.locals.pretty = true;
 
@@ -38,5 +39,8 @@ server.listen(process.env.PORT || 8080, function () {
 app.get('/', function (req, res) {
   res.render('index');
 });
+
+require('./mongo')(app);
+require('./socket')(app);
 
 module.exports = app;
