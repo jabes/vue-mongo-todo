@@ -1,4 +1,4 @@
-/* global Vue */
+/* global Vue, io */
 'use strict';
 
 (function () {
@@ -6,6 +6,14 @@
   // Cutting the Mustard
   if ('querySelector' in document && 'addEventListener' in window) {
     document.addEventListener('DOMContentLoaded', ()=> {
+
+      var socket = io.connect('//localhost:8080');
+
+      socket.on('connect', function(){
+        console.log('connected');
+      });
+      socket.on('event', function(data){});
+      socket.on('disconnect', function(){});
 
       new Vue({
         el: '#app',
