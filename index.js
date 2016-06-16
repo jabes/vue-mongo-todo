@@ -2,9 +2,8 @@
 
 var rootDir = __dirname;
 var express = require('express');
-var app = express();
 var bodyParser = require('body-parser');
-var schemas = require('./schemas.js');
+var app = express();
 
 app.locals.pretty = true;
 
@@ -15,7 +14,7 @@ app.locals.styles = [
 
 app.locals.scripts = [
   'https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.8.0/vue-resource.min.js',
   '/static/js/app.js'
 ];
 
@@ -33,5 +32,4 @@ app.get('/', function (req, res) {
   res.render('index');
 });
 
-app.post('/add', function (req, res) {
-});
+require('./mongo')(app);

@@ -11,7 +11,14 @@ head
     each url in scripts
         script(src='#{url}')
 
-body
-    #editor
-        textarea(v-model="input")
-        div(v-html="input | marked")
+body#app
+
+    h1 Vue Todo
+
+    form(v-on:submit.prevent="addTask")
+        label Add Task
+          input(v-model="newTask.text")
+          button(type="submit") Add
+
+    ul
+      li(v-for="task in tasks") {{ task.text }}
