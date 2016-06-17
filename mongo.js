@@ -1,8 +1,37 @@
 'use strict';
 
+const dbURI = 'mongodb://localhost/VueTodo';
+
 module.exports = function (app) {
   var mongoose = require('mongoose');
-  mongoose.connect('mongodb://localhost/VueTodo');
+  mongoose.connect(dbURI);
+
+  // When successfully connected
+  mongoose.connection.on('connected', function () {
+    console.log('Mongoose connected: ' + dbURI);
+  });
+
+  // If the connection throws an error
+  mongoose.connection.on('error', function (err) {
+    console.log('Mongoose connection error: ' + err);
+  });
+
+  // When the connection is disconnected
+  mongoose.connection.on('disconnected', function () {
+    console.log('Mongoose disconnected');
+  });
+
+  var gracefulExit = function () {
+    mongoose.connection.close(function () {
+      console.log('Mongoose disconnected through app termination');
+      process.exit(0);
+    });
+  };
+
+  // If the Node process ends, close the Mongoose connection
+  process
+    .on('SIGINT', gracefulExit) // interrupt signal
+    .on('SIGTERM', gracefulExit); // termination signal
 
   var schemas = {
     task: new mongoose.Schema({
