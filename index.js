@@ -5,6 +5,7 @@ var http = require('http');
 var EventEmitter = require('events');
 var express = require('express');
 var bodyParser = require('body-parser');
+var morgan = require('morgan');
 
 var app = express();
 var server = http.createServer(app);
@@ -31,6 +32,7 @@ app.set('view engine', 'jade');
 
 app.use('/static', express.static(`${rootDir}/assets`));
 app.use(bodyParser.json());
+app.use(morgan('dev')); // http logger
 
 server.listen(process.env.PORT || 8080, function () {
   console.log('Server listening on port:', this.address().port);

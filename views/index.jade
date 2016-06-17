@@ -17,7 +17,7 @@ body#app
 
     form(v-on:submit.prevent="addTask")
         label Add Task
-          input(v-model="newTask.text")
+          input(v-model="newTask.text" required)
           button(type="submit") Add
 
     ul

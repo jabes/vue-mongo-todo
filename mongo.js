@@ -8,7 +8,7 @@ module.exports = function (app) {
 
   // When successfully connected
   mongoose.connection.on('connected', function () {
-    console.log('Mongoose connected: ' + dbURI);
+    console.log('Mongoose successfully connected to: ' + dbURI);
   });
 
   // If the connection throws an error
@@ -18,7 +18,7 @@ module.exports = function (app) {
 
   // When the connection is disconnected
   mongoose.connection.on('disconnected', function () {
-    console.log('Mongoose disconnected');
+    console.log('Mongoose was disconnected');
   });
 
   var gracefulExit = function () {
