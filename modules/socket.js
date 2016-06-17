@@ -3,6 +3,7 @@
 module.exports = function (app) {
   var io = require('socket.io')(app.server);
   io.on('connection', function (socket) {
+
     var ipAddr = socket.request.connection.remoteAddress;
     console.log(`Socket connected: ${ipAddr}`);
     socket.on('disconnect', function () {
@@ -12,5 +13,6 @@ module.exports = function (app) {
     app.events.on('taskAdded', function (task) {
       socket.emit('taskAdded', task);
     });
+
   });
 };

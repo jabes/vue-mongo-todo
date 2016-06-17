@@ -44,25 +44,11 @@ module.exports = function (app) {
     task: mongoose.model('Task', schemas.task)
   };
 
-  app.get('/getTasks', function (req, res) {
-    models.task.find().exec(function (err, tasks) {
-      res.json({
-        err: err || false,
-        tasks: tasks
-      });
-    });
-  });
+  var mongo = {
+    schemas: schemas,
+    models: models
+  };
 
-  app.post('/addTask', function (req, res) {
-    models.task.create({
-      text: req.body.task
-    }, function (err, task) {
-      if (!err) { app.events.emit('taskAdded', task); }
-      res.json({
-        err: err || false,
-        task: task
-      });
-    })
-  });
-
+  app.mongo = mongo;
+  return mongo;
 };
