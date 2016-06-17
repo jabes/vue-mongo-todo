@@ -2,23 +2,25 @@ doctype
 html
 
 head
-    title ViewJS
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    each url in styles
-        link(rel='stylesheet', href='#{url}')
-    each url in scripts
-        script(src='#{url}')
+  title ViewJS
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  each url in styles
+    link(rel='stylesheet', href='#{url}')
+  each url in scripts
+    script(src='#{url}')
 
 body#app
 
-    h1 Vue Todo
+  h1 Vue Todo
 
-    form(v-on:submit.prevent="addTask")
-        label Add Task
-          input(v-model="newTask.text" required)
-          button(type="submit") Add
+  form(v-on:submit.prevent="createTask")
+    input(v-model="newTask.text" required)
+    button(type="submit") Add
 
-    ul
-      li(v-for="task in tasks") {{ task.text }}
+  ul
+    li(v-for="task in tasks") {{ task.text }}
+      button(type="button" v-on:click="removeTask(task)") Remove
+
+  p(v-if="!tasks.length") No Tasks.

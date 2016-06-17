@@ -10,8 +10,12 @@ module.exports = function (app) {
       console.log(`Socket disconnected: ${ipAddr}`);
     });
 
-    app.events.on('taskAdded', function (task) {
-      socket.emit('taskAdded', task);
+    app.events.on('task:created', function (task) {
+      socket.emit('task:created', task);
+    });
+
+    app.events.on('task:removed', function (id) {
+      socket.emit('task:removed', id);
     });
 
   });
