@@ -6,6 +6,8 @@
  * @param {function} app.post
  * @param {function} app.put
  * @param {function} app.delete
+ * @param {function} app.on
+ * @param {function} app.emit
  */
 module.exports = function (app) {
 
@@ -26,7 +28,7 @@ module.exports = function (app) {
     app.mongo.models.task.create({
       text: req.body.text
     }, function (err, task) {
-      if (!err) { app.events.emit('task:created', task); }
+      if (!err) { app.emit('app:task:created', task); }
       res.json({
         err: err || false,
         task: task
@@ -36,7 +38,7 @@ module.exports = function (app) {
 
   app.delete('/task', function (req, res) {
     app.mongo.models.task.findByIdAndRemove(req.body.id, function (err) {
-      if (!err) { app.events.emit('task:removed', req.body.id); }
+      if (!err) { app.emit('app:task:removed', req.body.id); }
       res.json({
         err: err || false,
         id: req.body.id

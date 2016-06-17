@@ -2,7 +2,6 @@
 
 module.exports = function (rootDir) {
   var http = require('http');
-  var EventEmitter = require('events');
   var express = require('express');
   var bodyParser = require('body-parser');
   var morgan = require('morgan');
@@ -11,8 +10,6 @@ module.exports = function (rootDir) {
   var server = http.createServer(app);
 
   app.server = server;
-  app.events = new EventEmitter();
-
   app.locals.pretty = true;
 
   app.locals.styles = [

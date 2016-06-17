@@ -12,11 +12,11 @@
       // socket.on('connect', function(){});
       // socket.on('disconnect', function(){});
 
-      socket.on('task:created', function (task) {
+      socket.on('socket:task:created', function (task) {
         vue.tasks.push(task);
       });
 
-      socket.on('task:removed', function (id) {
+      socket.on('socket:task:removed', function (id) {
         for (let i = 0; i < vue.tasks.length; i++) {
           if (vue.tasks[i]._id === id) {
             vue.tasks.splice(i, 1);
