@@ -5,9 +5,11 @@ module.exports = function (rootDir) {
   var express = require('express');
   var bodyParser = require('body-parser');
   var morgan = require('morgan');
+  var ngrok = require('ngrok');
 
   var app = express();
   var server = http.createServer(app);
+  var port = process.env.PORT || 8080;
 
   app.server = server;
   app.locals.pretty = true;
@@ -31,8 +33,12 @@ module.exports = function (rootDir) {
   app.use(bodyParser.json());
   app.use(morgan('dev')); // http logger
 
-  server.listen(process.env.PORT || 8080, function () {
+  server.listen(port, function () {
     console.log('Server listening on port:', this.address().port);
+  });
+
+  ngrok.connect(port, function (err, url) {
+    console.log('ngrok url:', url);
   });
 
   return app;
