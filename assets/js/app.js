@@ -41,10 +41,6 @@
             var app = this;
             app.$http.post('/addTask', {
               task: app.newTask.text
-            }).then(function (response) {
-              if (response && !response.err) {
-                app.tasks.push(response.data.task);
-              }
             });
           }
 
