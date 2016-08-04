@@ -5,18 +5,20 @@
 
   "dependencies": {
     "body-parser": "1.15.1",
+    "concurrently": "2.2.0",
     "express": "4.14.0",
     "jade": "1.11.0",
     "mongoose": "4.5.0",
     "morgan": "1.7.0",
     "nodemon": "1.9.2",
     "socket.io": "1.4.6",
-    "ngrok": "2.2.1 "
+    "ngrok": "2.2.1"
   },
 
   "scripts": {
-    "mongo-start": "mkdir -p mongo-db; mongod --dbpath mongo-db",
-    "start": "nodemon index.js"
+    "start-mongo": "mkdir -p mongo-db; mongod --dbpath mongo-db/",
+    "start-node": "nodemon --ignore node_modules/",
+    "start": "concurrently -k 'npm run start-mongo' 'npm run start-node'"
   },
 
   "author": "Justin Bull",
