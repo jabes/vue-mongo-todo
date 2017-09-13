@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function (app) {
-  var db = 'vue-todo';
+  var db = 'vue-mongo-todo';
   var dbURI = 'mongodb://localhost/' + db;
   var mongoose = require('mongoose');
   mongoose.connect(dbURI);

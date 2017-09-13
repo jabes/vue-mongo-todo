@@ -1,4 +1,4 @@
-# Vue Todo
+# Vue Mongo Todo
 
 This is a really simple real time todo app built with Node, Vue, and MongoDB.
 
