@@ -1,0 +1,108 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  background: #888;
+}
+
+.container {
+  max-width: 500px;
+  width: 100%;
+  margin: 100px auto;
+  padding: 35px 50px;
+  background: white;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+ul {
+  list-style: none;
+  margin: 30px 0;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+  vertical-align: middle;
+}
+
+ul li span {
+  margin-left: 10px;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+ul li button {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 0;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+ul li button:hover {
+  color: red;
+}
+
+ul li button svg {
+  fill: currentColor;
+  color: inherit;
+}
+
+form {
+  font-size: 0;
+}
+
+form input {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  background: #FFF;
+  border: 1px solid #BBB;
+  border-radius: 5px 0 0 5px;
+  font-size: 18px;
+  color: #333;
+}
+
+form button {
+  display: block;
+  margin: 0;
+  padding: 10px;
+  background: linear-gradient(to bottom, #FFF, #EEE);
+  border: 1px solid #BBB;
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+  font-size: 18px;
+  color: #333;
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-auto {
+  flex: auto;
+}
+
+.flex-none {
+  flex: none;
+}

@@ -5,9 +5,9 @@ module.exports = function (app) {
   io.on('connection', function (socket) {
 
     var ipAddr = socket.request.connection.remoteAddress;
-    console.log(`Socket connected: ${ipAddr}`);
+    console.log('Socket connected:' + ipAddr);
     socket.on('disconnect', function () {
-      console.log(`Socket disconnected: ${ipAddr}`);
+      console.log('Socket disconnected:' + ipAddr);
     });
 
     app.on('app:task:created', function (task) {

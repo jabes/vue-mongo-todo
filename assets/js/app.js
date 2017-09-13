@@ -5,7 +5,7 @@
 
   // Cutting the Mustard
   if ('querySelector' in document && 'addEventListener' in window) {
-    document.addEventListener('DOMContentLoaded', ()=> {
+    document.addEventListener('DOMContentLoaded', function () {
 
       var socket = io.connect(window.location.origin);
 
@@ -17,7 +17,7 @@
       });
 
       socket.on('socket:task:removed', function (id) {
-        for (let i = 0; i < vue.tasks.length; i++) {
+        for (var i = 0; i < vue.tasks.length; i++) {
           if (vue.tasks[i]._id === id) {
             vue.tasks.splice(i, 1);
             break;
@@ -52,7 +52,7 @@
 
           removeTask: function (task) {
             this.$http.delete('/task', {
-              id: task._id
+              id: task['_id']
             });
           }
 

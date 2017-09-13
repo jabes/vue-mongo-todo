@@ -1,8 +1,19 @@
 {
-  "name": "viewjs",
-  "version": "0.0.0",
+  "name": "view-todo",
+  "description": "This is a simple real time todo app built with Node, Vue, and MongoDB.",
   "main": "index.js",
-
+  "private": true,
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Justin Bull",
+    "email": "bull.justin@gmail.com",
+    "url": "http://jbull.ca/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jabes/control-demo"
+  },
   "dependencies": {
     "body-parser": "1.15.2",
     "concurrently": "2.2.0",
@@ -14,13 +25,9 @@
     "socket.io": "1.4.8",
     "ngrok": "2.2.2"
   },
-
   "scripts": {
     "start-mongo": "mkdir -p mongo-db; mongod --dbpath mongo-db/",
     "start-node": "nodemon --ignore node_modules/",
     "start": "concurrently -k 'npm run start-mongo' 'npm run start-node'"
-  },
-
-  "author": "Justin Bull",
-  "license": "ISC"
+  }
 }

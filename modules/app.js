@@ -26,10 +26,10 @@ module.exports = function (rootDir) {
     '/static/js/app.js'
   ];
 
-  app.set('views', `${rootDir}/views`);
+  app.set('views', rootDir + '/views');
   app.set('view engine', 'jade');
 
-  app.use('/static', express.static(`${rootDir}/assets`));
+  app.use('/static', express.static(rootDir + '/assets'));
   app.use(bodyParser.json());
   app.use(morgan('dev')); // http logger
 

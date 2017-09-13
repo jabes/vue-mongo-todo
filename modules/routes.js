@@ -1,14 +1,5 @@
 'use strict';
 
-/**
- * @param {Object} app
- * @param {function} app.get
- * @param {function} app.post
- * @param {function} app.put
- * @param {function} app.delete
- * @param {function} app.on
- * @param {function} app.emit
- */
 module.exports = function (app) {
 
   app.get('/', function (req, res) {
