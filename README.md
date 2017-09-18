@@ -2,6 +2,8 @@
 
 This is a really simple real time todo app built with Node, Vue, and MongoDB.
 
+![](screenshot.png)
+
 ### Requirements
 
 The following are required by this app and must be install on your machine to work.
